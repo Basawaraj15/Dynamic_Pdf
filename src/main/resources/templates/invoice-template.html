@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center; 
+        }
+        td {
+            border: 1px solid black;
+            padding: 8px;
+             
+        }
+
+        .buyer-seller {
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+
+   
+
+    <!-- Single Table for Seller, Buyer, and Items Information -->
+    <table>
+        <!-- Seller and Buyer Information -->
+        <tr>
+            <td colspan="2">
+                <p><strong>Seller:</strong> <span th:text="${data.seller}" style= "font-weight: bold;"></span></p>
+                <p><strong>Address:</strong> <span th:text="${data.sellerAddress}" style= "font-weight: bold;"></span></p>
+                <p><strong>GSTIN:</strong> <span th:text="${data.sellerGstin}"style= "font-weight: bold;"></span></p>
+            </td>
+            <td colspan="2">
+                <p><strong>Buyer:</strong> <span th:text="${data.buyer}" style= "font-weight: bold;"></span></p>
+                <p><strong>Address:</strong> <span th:text="${data.buyerAddress} "style= "font-weight: bold;"></span></p>
+                <p><strong>GSTIN:</strong> <span th:text="${data.buyerGstin}" style= "font-weight: bold;"></span></p>
+            </td>
+        </tr>
+
+        <!-- Items Information -->
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Rate</th>
+            <th>Amount</th>
+        </tr>
+        <tr th:each="item : ${data.items}">
+            <td th:text="${item.name}" style= "font-weight: bold;"></td>
+            <td th:text="${item.quantity}" style= "font-weight: bold;"></td>
+            <td th:text="${item.rate}" style= "font-weight: bold;"></td>
+            <td th:text="${item.amount}" style= "font-weight: bold;"></td>
+        </tr>
+
+        
+        <tr>
+            <td colspan="4">&nbsp;</td> 
+        </tr>
+    </table>
+
+</body>
+</html>
